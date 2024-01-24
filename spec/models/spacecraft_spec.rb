@@ -34,4 +34,19 @@ RSpec.describe Spacecraft, type: :model do
       expect(spacecraft.x).to eq(1) # Should not move beyond the boundary
     end
   end
+  describe '#turn_right' do
+    it 'turns the spacecraft 90 degrees to the right' do
+      spacecraft = Spacecraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      spacecraft.turn_right
+      expect(spacecraft.direction).to eq('E')
+    end
+  end
+
+  describe '#turn_left' do
+    it 'turns the spacecraft 90 degrees to the left' do
+      spacecraft = Spacecraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      spacecraft.turn_left
+      expect(spacecraft.direction).to eq('W')
+    end
+  end
 end

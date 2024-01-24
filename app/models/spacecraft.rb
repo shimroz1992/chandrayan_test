@@ -16,6 +16,17 @@ class Spacecraft < ApplicationRecord
     when 'W' then move_along_axis(:x, 1, max_bound: 9_999_999)
     end
   end
+  def turn_left
+    directions = %w[N E S W]
+    current_index = directions.index(direction) || 0 # Default to 0 if direction is not found
+    self.direction = directions.rotate(-1).fetch(current_index, 'N')
+  end
+
+  def turn_right
+    directions = %w[N E S W]
+    current_index = directions.index(direction)
+    self.direction = directions.rotate(1)[current_index]
+  end
 
   private
 
