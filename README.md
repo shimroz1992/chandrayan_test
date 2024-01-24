@@ -65,6 +65,8 @@ Open your project's Gemfile and add the rspec-rails gem to the :development, :te
 You can now run RSpec to execute your tests.  
 
 `rspec`  
+or  
+
 `rspec spec/models`  
 
 ## Conclusion
