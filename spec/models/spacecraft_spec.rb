@@ -65,4 +65,12 @@ RSpec.describe Spacecraft, type: :model do
       expect(spacecraft.direction).to eq('Down')
     end
   end
+  describe '#execute_commands' do
+    it 'executes a series of commands accurately and efficiently' do
+      spacecraft = Spacecraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      spacecraft.execute_commands(['f', 'r', 'u', 'b', 'l'])
+      expect(spacecraft.position).to eq([0, 1, 0])
+      expect(spacecraft.direction).to eq('W')
+    end
+  end
 end

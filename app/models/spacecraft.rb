@@ -35,6 +35,13 @@ class Spacecraft < ApplicationRecord
   def turn_down
     self.direction = 'Down'
   end
+  def execute_commands(commands)
+    commands.each { |command| execute_command(command) }
+  end
+
+  def position
+    [x, y, z]
+  end
 
   private
 
@@ -44,5 +51,15 @@ class Spacecraft < ApplicationRecord
 
   def max_bound_reached?(axis, step, max_bound)
     max_bound && (self.send(axis) + step).send(axis == :y ? :zero? : :>=, max_bound)
+  end
+  def execute_command(command)
+    case command
+    when 'f' then move_forward
+    when 'b' then move_backward
+    when 'l' then turn_left
+    when 'r' then turn_right
+    when 'u' then turn_up
+    when 'd' then turn_down
+    end
   end
 end
