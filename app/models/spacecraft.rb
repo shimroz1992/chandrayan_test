@@ -28,6 +28,14 @@ class Spacecraft < ApplicationRecord
     self.direction = directions.rotate(1)[current_index]
   end
 
+  def turn_up
+    self.direction = 'Up'
+  end
+
+  def turn_down
+    self.direction = 'Down'
+  end
+
   private
 
   def move_along_axis(axis, step, max_bound: nil)

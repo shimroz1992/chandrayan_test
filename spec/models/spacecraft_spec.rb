@@ -49,4 +49,20 @@ RSpec.describe Spacecraft, type: :model do
       expect(spacecraft.direction).to eq('W')
     end
   end
+
+  describe '#turn_up' do
+    it 'turns the spacecraft upwards' do
+      spacecraft = Spacecraft.new(x: 0, y: 0, z: 0, direction: 'N')
+      spacecraft.turn_up
+      expect(spacecraft.direction).to eq('Up')
+    end
+  end
+
+  describe '#turn_down' do
+    it 'turns the spacecraft downwards' do
+      spacecraft = Spacecraft.new(x: 0, y: 0, z: 0, direction: 'Up')
+      spacecraft.turn_down
+      expect(spacecraft.direction).to eq('Down')
+    end
+  end
 end
